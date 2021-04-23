@@ -2,8 +2,11 @@ const express = require('express');
 const open = require('open');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const jwt = require('jsonwebtoken');
+const cityController = require('./controllers/cities.controllers');
 
 const app = express();
+
 app.use(cors());
 app.use(express.static('docs'));
 
@@ -17,6 +20,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // parse requests of content-type - application/json
 app.use(bodyParser.json());
+
+
 
 // define a root route
 
