@@ -40,6 +40,10 @@ const authenticateJWT = (req, res, next) => {
     }
 };
 
+app.get('/all', authenticateJWT, (req, res) => {
+    res.json(cityController.findAll);
+});
+
 // define a root route
 
 // Require employee routes
