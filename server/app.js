@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 const cityController = require('./controllers/cities.controllers');
 
 const app = express();
-
+const accessTokenSecret = 'youraccesstokensecret';
 app.use(cors());
 app.use(express.static('docs'));
 
