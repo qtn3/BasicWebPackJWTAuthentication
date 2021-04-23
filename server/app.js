@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const jwt = require('jsonwebtoken');
 const cityController = require('./controllers/cities.controllers');
+const City = require('./models/city.model');
 
 const app = express();
 const accessTokenSecret = 'youraccesstokensecret';
@@ -41,7 +42,12 @@ const authenticateJWT = (req, res, next) => {
 };
 
 app.get('/all', authenticateJWT, (req, res) => {
-    res.json(cityController.findAll);
+    City.findAll((err, cities) => {
+        console.log('controller');
+        if (err) res.send(err);
+        console.log('res', cities);
+        res.json({ data: cities });
+    });
 });
 
 // define a root route
